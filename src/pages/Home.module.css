@@ -1,0 +1,22 @@
+.container {
+  background-color: whitesmoke;
+}
+.innerContainer {
+  width: 1200px;
+  margin: 0 auto;
+}
+.title {
+  color: white;
+  font-size: large;
+  font-weight: bolder;
+  background-color: #fab41e;
+  padding: 0.5rem;
+}
+.contentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.3rem;
+  row-gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}

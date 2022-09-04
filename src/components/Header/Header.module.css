@@ -1,0 +1,47 @@
+.container {
+  margin-bottom: 29.5rem;
+}
+.contentContainer {
+  padding: 0.7rem;
+  background-color: #fab41e;
+}
+.innerContainer {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: x-large;
+  font-weight: bolder;
+  color: white;
+}
+.inputContainer {
+  width: 50%;
+}
+.input {
+  width: 100%;
+  outline: none;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: 0px;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.button {
+  background-color: #fab41e;
+  border: 0px;
+  color: white;
+  font-weight: bolder;
+  font-size: large;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.button:hover {
+  color: whitesmoke;
+}
