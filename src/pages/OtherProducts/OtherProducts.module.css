@@ -1,0 +1,42 @@
+.container {
+  background-color: whitesmoke;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.innerContainer {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.title {
+  color: white;
+  background-color: #fab41e;
+  padding-left: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: bolder;
+}
+h3 {
+  margin: 0;
+}
+.link {
+  color: grey;
+  background-color: white;
+  padding-left: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  font-weight: bolder;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(227, 226, 226);
+}
+.link:hover {
+  background-color: rgb(227, 227, 227);
+}

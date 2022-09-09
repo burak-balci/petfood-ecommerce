@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import Video from "../Video";
 import styles from "./Header.module.css";
@@ -8,7 +9,9 @@ const Header = () => {
     <div>
       <div className={styles.contentContainer}>
         <div className={styles.innerContainer}>
-          <div className={styles.logo}>8Pet Mama</div>
+          <Link to="/" className={styles.logo}>
+            8Pet Mama
+          </Link>
           <div className={styles.inputContainer}>
             <input className={styles.input} type="text" />
           </div>
