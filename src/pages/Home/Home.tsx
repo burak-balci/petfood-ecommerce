@@ -1,12 +1,15 @@
 import React from "react";
-import Card from "../components/Card";
-import Header from "../components/Header";
+import Header from "../../components/Header";
+import Card from "../../components/Card";
 import styles from "./Home.module.css";
+import Video from "../../components/Video";
 
 const Home = () => {
   return (
     <div>
-      <Header />
+      <div className={styles.video}>
+        <Video />
+      </div>
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           <div className={styles.title}>Öne Çıkan Ürünler</div>

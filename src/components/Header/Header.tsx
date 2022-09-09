@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.contentContainer}>
         <div className={styles.innerContainer}>
           <div className={styles.logo}>8Pet Mama</div>
@@ -19,7 +19,6 @@ const Header = () => {
         </div>
       </div>
       <Navbar />
-      <Video />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 .container {
   background-color: whitesmoke;
+  border-bottom: solid 1px #fab41e;
 }
 .innerContainer {
   width: 1200px;

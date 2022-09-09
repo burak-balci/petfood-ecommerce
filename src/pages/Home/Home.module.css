@@ -1,5 +1,6 @@
 .container {
   background-color: whitesmoke;
+  padding-bottom: 3rem;
 }
 .innerContainer {
   width: 1200px;
@@ -19,4 +20,7 @@
   row-gap: 1rem;
   justify-content: center;
   margin-top: 1rem;
+}
+.video {
+  margin-bottom: 29.5rem;
 }
