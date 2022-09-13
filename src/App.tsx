@@ -11,13 +11,21 @@ import OtherHome from "./pages/OtherHome";
 import OtherCanned from "./pages/OtherCanned";
 import OtherReward from "./pages/OtherReward";
 import OtherBiscuit from "./pages/OtherBiscuit";
+import Register from "./pages/Register";
+import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div>
       <Header />
+      <div>
+        <Toaster position="bottom-center" reverseOrder={false} />
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/kayit" element={<Register />} />
+        <Route path="/giris" element={<Login />} />
         <Route path="/kedi-mamasi" element={<CatFood />} />
         <Route path="/kopek-mamasi" element={<DogFood />} />
         <Route path="/diger-urunler" element={<OtherProducts />}>

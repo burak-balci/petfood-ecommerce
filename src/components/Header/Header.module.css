@@ -39,6 +39,7 @@
   font-size: large;
   cursor: pointer;
   padding: 0.3rem;
+  text-decoration: none;
 }
 .button:hover {
   color: whitesmoke;
