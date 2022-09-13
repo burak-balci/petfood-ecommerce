@@ -46,7 +46,7 @@ const Login = () => {
             </div>
           </div>
           <button type="submit" className={styles.button}>
-            Üye Ol
+            Giriş Yap
           </button>
         </form>
       </div>

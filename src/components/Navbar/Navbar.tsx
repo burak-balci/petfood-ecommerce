@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link to="/kopek-mamasi" className={styles.button}>
           Köpek Mamaları
         </Link>
-        <Link to="/diger-urunler" className={styles.button}>
+        <Link to="/diger-urunler/yas-mamasi" className={styles.button}>
           Diğer Ürünler
         </Link>
       </div>

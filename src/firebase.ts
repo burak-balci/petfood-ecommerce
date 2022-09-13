@@ -8,7 +8,15 @@ import {
 } from "firebase/auth";
 import toast from "react-hot-toast";
 import store from "./context/store";
-import { login as log } from "./context/auth";
+import { login as loginHandle } from "./context/auth";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  where,
+  query,
+} from "firebase/firestore";
+import { clearFoods, updateFoods } from "./context/food";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -21,6 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
+export const db = getFirestore(app);
 
 export const register = async ({
   email,
@@ -58,7 +67,7 @@ export const login = async (email: string, password: string) => {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     store.dispatch(
-      log({
+      loginHandle({
         email: auth.currentUser?.email,
         uid: auth.currentUser?.uid,
       })
@@ -75,4 +84,12 @@ export const logout = async () => {
   } catch (err) {
     toast.error((err as Error).message);
   }
+};
+
+export const getFoods = async (type: string) => {
+  const q = query(collection(db, "foods"), where("type", "==", type));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    store.dispatch(updateFoods(doc.data()));
+  });
 };

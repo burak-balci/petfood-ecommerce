@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../../components/Header";
 import Card from "../../components/Card";
 import styles from "./Home.module.css";
@@ -14,15 +13,6 @@ const Home = () => {
         <div className={styles.innerContainer}>
           <div className={styles.title}>Öne Çıkan Ürünler</div>
           <div className={styles.contentContainer}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
             <Card />
           </div>
         </div>

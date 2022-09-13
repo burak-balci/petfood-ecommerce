@@ -21,7 +21,6 @@ const Header = () => {
   const { user } = useSelector((state: Auth) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(user);
 
   const handleLogout = async () => {
     await logout();
