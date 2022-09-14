@@ -1,15 +1,39 @@
 import React from "react";
+import { updateBasket } from "../../firebase";
 import styles from "./Card.module.css";
 
-const Card = () => {
+interface Props {
+  id: string;
+  uid: string;
+  basketItems: {
+    desc: string;
+    id: string;
+    image: string;
+    price: number;
+    title: string;
+    type: string;
+  };
+  piece: number;
+}
+interface Item {
+  item: Props;
+}
+
+const Card = ({ item }: Item) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateBasket(item.id, e.target.value);
+  };
+
   return (
     <div className={styles.container}>
-      <img
-        src="https://www.temizmama.com/assets/img/urun/10/anasayfa/bonacibo-yetiskin-kopek-mamasi.webp"
-        alt=""
-      />
-      <div>Bonacibo Adult Dog Lamb & Rice</div>
-      <div>Kuzu Etli ve Pirinçli Yetişkin Köpek Maması</div>
+      <img src={item.basketItems.image} alt={item.basketItems.title} />
+      <div>{item.basketItems.title}</div>
+      <div>Fiyat : {item.basketItems.price}</div>
+      <div>
+        Satın Alınan Miktar :
+        <input type="number" value={item.piece} onChange={handleChange} />
+      </div>
+      <div>Toplam Fiyat : {item.basketItems.price * item.piece}</div>
     </div>
   );
 };

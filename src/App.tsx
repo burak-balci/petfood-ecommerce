@@ -14,6 +14,7 @@ import OtherBiscuit from "./pages/OtherBiscuit";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
+import Basket from "./pages/Basket";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/kayit" element={<Register />} />
         <Route path="/giris" element={<Login />} />
+        <Route path="/sepet" element={<Basket />} />
         <Route path="/kedi-mamasi" element={<CatFood />} />
         <Route path="/kopek-mamasi" element={<DogFood />} />
         <Route path="/diger-urunler" element={<OtherProducts />}>

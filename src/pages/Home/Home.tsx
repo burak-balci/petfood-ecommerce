@@ -12,9 +12,7 @@ const Home = () => {
       <div className={styles.container}>
         <div className={styles.innerContainer}>
           <div className={styles.title}>Öne Çıkan Ürünler</div>
-          <div className={styles.contentContainer}>
-            <Card />
-          </div>
+          <div className={styles.contentContainer}>{/* <Card /> */}</div>
         </div>
       </div>
     </div>

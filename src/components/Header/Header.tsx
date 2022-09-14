@@ -5,20 +5,11 @@ import { useSelector } from "react-redux";
 import { logout } from "../../firebase";
 import { logout as logoutHandle } from "../../context/auth";
 import { useDispatch } from "react-redux";
-
-interface Auth {
-  auth: User;
-}
-interface User {
-  user: UserProps;
-}
-interface UserProps {
-  email: string;
-  uid: string;
-}
+import { Auth } from "../../types";
 
 const Header = () => {
   const { user } = useSelector((state: Auth) => state.auth);
+  const { basketItems } = useSelector((state: Auth) => state.basket);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,8 +42,8 @@ const Header = () => {
             </div>
           ) : (
             <div className={styles.buttonContainer}>
-              <Link to="/" className={styles.button}>
-                Sepetim
+              <Link to="/sepet" className={styles.button}>
+                Sepetim ({basketItems.length})
               </Link>
               <span onClick={handleLogout} className={styles.button}>
                 Çıkış Yap

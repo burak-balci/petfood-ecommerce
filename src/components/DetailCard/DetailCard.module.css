@@ -32,3 +32,28 @@ th {
 td {
   border-bottom: 1px solid rgb(216, 215, 215);
 }
+.input {
+  outline: none;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.3rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+.button {
+  width: 50%;
+  text-align: center;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  background-color: #ec971f;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  font-size: medium;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #cb811b;
+}

@@ -15,8 +15,17 @@ import {
   getDocs,
   where,
   query,
+  serverTimestamp,
+  addDoc,
+  onSnapshot,
+  orderBy,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 import { clearFoods, updateFoods } from "./context/food";
+import { Basket, Item } from "./types";
+import { appendItem, setItems } from "./context/basket";
+import { number } from "yup";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -72,7 +81,26 @@ onAuthStateChanged(auth, (user) => {
         uid: auth.currentUser?.uid,
       })
     );
-    const uid = user.uid;
+
+    const q = query(collection(db, "basket"), where("uid", "==", user.uid));
+    // onSnapshot(q, (querySnapshot) => {
+    //   querySnapshot.forEach((doc) => {
+    //     store.dispatch(appendItem({ data: doc.data(), id: doc.id }));
+    //   });
+    // });
+    onSnapshot(q, (doc) => {
+      store.dispatch(
+        setItems(
+          doc.docs.reduce(
+            (basketItems: any, basket) => [
+              ...basketItems,
+              { ...basket.data(), id: basket.id },
+            ],
+            []
+          )
+        )
+      );
+    });
   } else {
   }
 });
@@ -92,4 +120,23 @@ export const getFoods = async (type: string) => {
   querySnapshot.forEach((doc) => {
     store.dispatch(updateFoods(doc.data()));
   });
+};
+
+export const addBasket = async (data: Basket) => {
+  try {
+    const result = await addDoc(collection(db, "basket"), data);
+    return result.id;
+  } catch (error) {
+    toast.error((error as Error).message);
+  }
+};
+
+export const updateBasket = async (id: any, piece: number | string) => {
+  try {
+    const basketRef = doc(db, "basket", id);
+    await updateDoc(basketRef, { piece });
+    toast.success("Başarıyla Güncellendi");
+  } catch (error) {
+    toast.error((error as Error).message);
+  }
 };

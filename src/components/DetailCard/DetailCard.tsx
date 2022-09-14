@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./DetailCard.module.css";
+import { addBasket } from "../../firebase";
+import { useSelector } from "react-redux";
+import { Auth, Item } from "../../types";
+import toast from "react-hot-toast";
 
 interface Food {
   type: string;
@@ -14,6 +18,19 @@ interface IProps {
 }
 
 const DetailCard = ({ item }: IProps) => {
+  const { user } = useSelector((state: Auth) => state.auth);
+  const [piece, setPiece] = useState("0");
+
+  const handleClick = async (item: Item) => {
+    await addBasket({
+      basketItems: item,
+      uid: user.uid,
+      piece: piece,
+    });
+    toast.success("Ürün sepetinize eklendi.");
+    setPiece("0");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
@@ -36,11 +53,26 @@ const DetailCard = ({ item }: IProps) => {
             </tr>
             <tr>
               <td>
-                <div>1.5 Kg x 2 Adet</div>
+                <div>1 Adet</div>
               </td>
-              <td>₺ {item.price}</td>
-              <td>1</td>
-              <td>Sepete ekle</td>
+              <td>{item.price} ₺</td>
+              <td>
+                <input
+                  type="number"
+                  min="0"
+                  className={styles.input}
+                  value={piece}
+                  onChange={(e) => setPiece(e.target.value)}
+                />
+              </td>
+              <td>
+                <button
+                  className={styles.button}
+                  onClick={() => handleClick(item)}
+                >
+                  Sepete ekle
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
