@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Basket from "./pages/Basket";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/kayit" element={<Register />} />
         <Route path="/giris" element={<Login />} />
         <Route path="/sepet" element={<Basket />} />
+        <Route path="/search/:word" element={<Search />} />
         <Route path="/kedi-mamasi" element={<CatFood />} />
         <Route path="/kopek-mamasi" element={<DogFood />} />
         <Route path="/diger-urunler" element={<OtherProducts />}>

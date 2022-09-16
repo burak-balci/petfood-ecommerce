@@ -1,0 +1,14 @@
+.container {
+  background-color: whitesmoke;
+  padding-bottom: 3rem;
+}
+.innerContainer {
+  width: 1200px;
+  margin: 0 auto;
+}
+.contentContainer {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

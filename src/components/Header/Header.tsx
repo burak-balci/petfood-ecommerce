@@ -6,8 +6,10 @@ import { logout } from "../../firebase";
 import { logout as logoutHandle } from "../../context/auth";
 import { useDispatch } from "react-redux";
 import { Auth } from "../../types";
+import React, { useState } from "react";
 
 const Header = () => {
+  const [search, setSearch] = useState("");
   const { user } = useSelector((state: Auth) => state.auth);
   const { basketItems } = useSelector((state: Auth) => state.basket);
   const dispatch = useDispatch();
@@ -21,6 +23,11 @@ const Header = () => {
     });
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate(`/search/${search}`);
+  };
+
   return (
     <div>
       <div className={styles.contentContainer}>
@@ -29,7 +36,14 @@ const Header = () => {
             8Pet Mama
           </Link>
           <div className={styles.inputContainer}>
-            <input className={styles.input} type="text" />
+            <form onSubmit={handleSubmit}>
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className={styles.input}
+                type="text"
+              />
+            </form>
           </div>
           {!user ? (
             <div className={styles.buttonContainer}>

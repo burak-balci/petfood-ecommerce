@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styles from "./DetailCard.module.css";
-import { addBasket } from "../../firebase";
+import { addBasket, deleteBasketItem } from "../../firebase";
 import { useSelector } from "react-redux";
 import { Auth, Item } from "../../types";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 interface Food {
   type: string;
@@ -17,9 +18,32 @@ interface IProps {
   item: Food;
 }
 
+interface Selector {
+  basket: Arr;
+}
+interface Arr {
+  basketItems: Props[];
+}
+
+interface Props {
+  id: string;
+  uid: string;
+  basketItems: {
+    desc: string;
+    id: string;
+    image: string;
+    price: number;
+    title: string;
+    type: string;
+  };
+  piece: number;
+}
+
 const DetailCard = ({ item }: IProps) => {
   const { user } = useSelector((state: Auth) => state.auth);
+  const { basketItems } = useSelector((state: Selector) => state.basket);
   const [piece, setPiece] = useState("0");
+  const navigate = useNavigate();
 
   const handleClick = async (item: Item) => {
     await addBasket({
@@ -59,19 +83,28 @@ const DetailCard = ({ item }: IProps) => {
               <td>
                 <input
                   type="number"
-                  min="0"
+                  min="1"
                   className={styles.input}
                   value={piece}
                   onChange={(e) => setPiece(e.target.value)}
                 />
               </td>
               <td>
-                <button
-                  className={styles.button}
-                  onClick={() => handleClick(item)}
-                >
-                  Sepete ekle
-                </button>
+                {JSON.stringify(basketItems).includes(item.title) ? (
+                  <button
+                    className={styles.button}
+                    onClick={() => navigate("/sepet")}
+                  >
+                    Sepete eklendi.
+                  </button>
+                ) : (
+                  <button
+                    className={styles.button}
+                    onClick={() => handleClick(item)}
+                  >
+                    Sepete ekle
+                  </button>
+                )}
               </td>
             </tr>
           </tbody>

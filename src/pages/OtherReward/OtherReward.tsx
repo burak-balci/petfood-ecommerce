@@ -4,6 +4,7 @@ import { getFoods } from "../../firebase";
 import { useEffect } from "react";
 import store from "../../context/store";
 import { clearFoods } from "../../context/food";
+import styles from "./OtherReward.module.css";
 
 interface Food {
   type: string;
@@ -21,7 +22,7 @@ const OtherReward = () => {
   }, []);
   const { food } = useSelector((state: any) => state.food);
   return (
-    <div>
+    <div className={styles.container}>
       {food.map((item: Food) => (
         <DetailCard key={item.id} item={item} />
       ))}

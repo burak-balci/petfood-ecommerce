@@ -21,6 +21,7 @@ import {
   orderBy,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { clearFoods, updateFoods } from "./context/food";
 import { Basket, Item } from "./types";
@@ -135,7 +136,24 @@ export const updateBasket = async (id: any, piece: number | string) => {
   try {
     const basketRef = doc(db, "basket", id);
     await updateDoc(basketRef, { piece });
-    toast.success("Başarıyla Güncellendi");
+    toast.success("Sepet başarıyla güncellendi.");
+  } catch (error) {
+    toast.error((error as Error).message);
+  }
+};
+
+export const getAllFoods = async () => {
+  const q = query(collection(db, "foods"));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    store.dispatch(updateFoods(doc.data()));
+  });
+};
+
+export const deleteBasketItem = async (id: any) => {
+  try {
+    await deleteDoc(doc(db, "basket", id));
+    toast.success("Sepet başarıyla güncellendi.");
   } catch (error) {
     toast.error((error as Error).message);
   }

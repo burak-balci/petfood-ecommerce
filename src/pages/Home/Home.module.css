@@ -12,6 +12,8 @@
   font-weight: bolder;
   background-color: #fab41e;
   padding: 0.5rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .contentContainer {
   display: flex;

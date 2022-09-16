@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
+import styles from "./Basket.module.css";
 
 const BasketPage = () => {
   const { basketItems } = useSelector((state: Selector) => state.basket);
@@ -25,11 +26,15 @@ const BasketPage = () => {
   }
 
   return (
-    <div>
-      <div>Basket</div>
-      {basketItems.map((item: Props, i) => (
-        <Card key={i} item={item} />
-      ))}
+    <div className={styles.container}>
+      <div className={styles.innerContainer}>
+        <div className={styles.title}>Sepetteki Ürünler</div>
+        <div className={styles.contentContainer}>
+          {basketItems.map((item: Props, i) => (
+            <Card key={i} item={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

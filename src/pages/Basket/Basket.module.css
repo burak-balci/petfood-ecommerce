@@ -1,0 +1,27 @@
+.container {
+  background-color: whitesmoke;
+  min-height: 90vh;
+  padding-bottom: 2rem;
+}
+.innerContainer {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.contentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.title {
+  width: 100%;
+  color: #fab41e;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
