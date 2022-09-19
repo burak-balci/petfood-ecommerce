@@ -24,9 +24,10 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { clearFoods, updateFoods } from "./context/food";
-import { Basket, Item } from "./types";
+import { Basket, Item, Order } from "./types";
 import { appendItem, setItems } from "./context/basket";
 import { number } from "yup";
+import { firestore } from "firebase-admin";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -84,11 +85,6 @@ onAuthStateChanged(auth, (user) => {
     );
 
     const q = query(collection(db, "basket"), where("uid", "==", user.uid));
-    // onSnapshot(q, (querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     store.dispatch(appendItem({ data: doc.data(), id: doc.id }));
-    //   });
-    // });
     onSnapshot(q, (doc) => {
       store.dispatch(
         setItems(
@@ -153,7 +149,15 @@ export const getAllFoods = async () => {
 export const deleteBasketItem = async (id: any) => {
   try {
     await deleteDoc(doc(db, "basket", id));
-    toast.success("Sepet başarıyla güncellendi.");
+  } catch (error) {
+    toast.error((error as Error).message);
+  }
+};
+
+export const addOrder = async (data: Order) => {
+  try {
+    const result = await addDoc(collection(db, "order"), data);
+    return result.id;
   } catch (error) {
     toast.error((error as Error).message);
   }

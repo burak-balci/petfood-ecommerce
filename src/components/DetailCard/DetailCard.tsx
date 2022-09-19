@@ -46,13 +46,17 @@ const DetailCard = ({ item }: IProps) => {
   const navigate = useNavigate();
 
   const handleClick = async (item: Item) => {
-    await addBasket({
-      basketItems: item,
-      uid: user.uid,
-      piece: piece,
-    });
-    toast.success("Ürün sepetinize eklendi.");
-    setPiece("0");
+    if (user) {
+      await addBasket({
+        basketItems: item,
+        uid: user.uid,
+        piece: piece,
+      });
+      toast.success("Ürün sepetinize eklendi.");
+      setPiece("0");
+    } else {
+      toast.error("Lütfen giriş yapınız.");
+    }
   };
 
   return (
@@ -101,6 +105,7 @@ const DetailCard = ({ item }: IProps) => {
                   <button
                     className={styles.button}
                     onClick={() => handleClick(item)}
+                    disabled={Number(piece) <= 0}
                   >
                     Sepete ekle
                   </button>

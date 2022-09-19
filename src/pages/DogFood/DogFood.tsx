@@ -24,8 +24,8 @@ const DogFood = () => {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        {food.map((item: Food) => (
-          <DetailCard key={item.id} item={item} />
+        {food.map((item: Food, i: number) => (
+          <DetailCard key={i} item={item} />
         ))}
       </div>
     </div>

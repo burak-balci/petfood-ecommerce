@@ -1,29 +1,55 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import styles from "./OtherProducts.module.css";
-import DetailCard from "../../components/DetailCard";
 
 const OtherProducts = () => {
+  const activeStyle = {
+    backgroundColor: "#ec971f",
+    color: "white",
+  };
+  const normalStyle = {
+    color: "grey",
+  };
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         <div className={styles.list}>
           <h3 className={styles.title}>Reyonlar</h3>
-          <Link className={styles.link} to="yas-mamasi">
+          <NavLink
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            className={styles.link}
+            to="yas-mamasi"
+          >
             Yaş Mama
-          </Link>
-          <Link className={styles.link} to="odul-mamasi">
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            className={styles.link}
+            to="odul-mamasi"
+          >
             Ödül Mamaları
-          </Link>
-          <Link className={styles.link} to="kemik">
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            className={styles.link}
+            to="kemik"
+          >
             Kemik
-          </Link>
-          <Link className={styles.link} to="kum">
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            className={styles.link}
+            to="kum"
+          >
             Kum
-          </Link>
-          <Link className={styles.link} to="biskuvi">
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+            className={styles.link}
+            to="biskuvi"
+          >
             Bisküvi
-          </Link>
+          </NavLink>
         </div>
         <div className={styles.other}>
           <Outlet />

@@ -15,8 +15,11 @@ const basket = createSlice({
     appendItem: (state, action) => {
       state.basketItems = [...state.basketItems, action.payload];
     },
+    clearBasket: (state) => {
+      state.basketItems = [];
+    },
   },
 });
 
-export const { setItems, appendItem } = basket.actions;
+export const { setItems, appendItem, clearBasket } = basket.actions;
 export default basket.reducer;

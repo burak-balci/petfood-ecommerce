@@ -23,8 +23,8 @@ const OtherSand = () => {
   const { food } = useSelector((state: any) => state.food);
   return (
     <div className={styles.container}>
-      {food.map((item: Food) => (
-        <DetailCard key={item.id} item={item} />
+      {food.map((item: Food, i: number) => (
+        <DetailCard key={i} item={item} />
       ))}
     </div>
   );

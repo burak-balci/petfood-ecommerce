@@ -6,6 +6,7 @@
   padding: 3rem;
   border-radius: 10px;
   background-color: #ffff;
+  width: 100%;
 }
 .innerContainer {
   display: flex;

@@ -1,20 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const activeStyle = {
+    backgroundColor: "#fab41e",
+    color: "white",
+  };
+  const normalStyle = {
+    color: "grey",
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <Link to="/kedi-mamasi" className={styles.button}>
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+          to="/kedi-mamasi"
+          className={styles.button}
+        >
           Kedi Mamaları
-        </Link>
-        <Link to="/kopek-mamasi" className={styles.button}>
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+          to="/kopek-mamasi"
+          className={styles.button}
+        >
           Köpek Mamaları
-        </Link>
-        <Link to="/diger-urunler/yas-mamasi" className={styles.button}>
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : normalStyle)}
+          to="/diger-urunler/yas-mamasi"
+          className={styles.button}
+        >
           Diğer Ürünler
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

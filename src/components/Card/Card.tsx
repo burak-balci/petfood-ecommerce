@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { deleteBasketItem, updateBasket } from "../../firebase";
 import styles from "./Card.module.css";
 
@@ -22,6 +23,11 @@ interface Item {
 const Card = ({ item }: Item) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateBasket(item.id, e.target.value);
+  };
+
+  const handleDelete = () => {
+    deleteBasketItem(item.id);
+    toast.success("Sepet başarıyla güncellendi.");
   };
 
   return (
@@ -51,7 +57,7 @@ const Card = ({ item }: Item) => {
             />
             <span
               className={styles.buttonright}
-              onClick={() => updateBasket(item.id, item.piece + 1)}
+              onClick={() => updateBasket(item.id, Number(item.piece) + 1)}
             >
               +
             </span>
@@ -62,10 +68,7 @@ const Card = ({ item }: Item) => {
           {item.basketItems.price * item.piece} ₺
         </div>
         <div>
-          <button
-            className={styles.dButton}
-            onClick={() => deleteBasketItem(item.id)}
-          >
+          <button className={styles.dButton} onClick={handleDelete}>
             Sil
           </button>
         </div>

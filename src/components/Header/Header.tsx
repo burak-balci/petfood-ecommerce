@@ -26,6 +26,7 @@ const Header = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate(`/search/${search}`);
+    setSearch("");
   };
 
   return (
@@ -41,6 +42,7 @@ const Header = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className={styles.input}
+                placeholder="Ürün Ara..."
                 type="text"
               />
             </form>
