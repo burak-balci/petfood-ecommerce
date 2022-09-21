@@ -6,7 +6,7 @@ import styles from "./Basket.module.css";
 import { addOrder, deleteBasketItem } from "../../firebase";
 import { clearBasket } from "../../context/basket";
 import store from "../../context/store";
-import { Auth } from "../../types";
+import { Helmet } from "react-helmet";
 
 const BasketPage = () => {
   const { basketItems } = useSelector((state: Selector) => state.basket);
@@ -53,8 +53,14 @@ const BasketPage = () => {
     }
   };
 
+  console.log(basketItems);
+
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | Sepetim ({basketItems.length.toString()}) </title>
+      </Helmet>
       <div className={styles.innerContainer}>
         <div className={modal ? styles.activeModal : styles.disableModal}>
           <div className={styles.modalContainer}>

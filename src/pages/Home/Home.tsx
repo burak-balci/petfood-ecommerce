@@ -1,5 +1,3 @@
-import Header from "../../components/Header";
-import Card from "../../components/Card";
 import styles from "./Home.module.css";
 import Video from "../../components/Video";
 import { useSelector } from "react-redux";
@@ -8,6 +6,7 @@ import { clearFoods } from "../../context/food";
 import store from "../../context/store";
 import { getAllFoods } from "../../firebase";
 import DetailCard from "../../components/DetailCard";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   useEffect(() => {
@@ -30,6 +29,10 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama</title>
+      </Helmet>
       <div className={styles.video}>
         <Video />
       </div>

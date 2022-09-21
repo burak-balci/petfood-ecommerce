@@ -7,7 +7,6 @@ import DogFood from "./pages/DogFood";
 import OtherProducts from "./pages/OtherProducts";
 import OtherBone from "./pages/OtherBone";
 import OtherSand from "./pages/OtherSand";
-import OtherHome from "./pages/OtherHome";
 import OtherCanned from "./pages/OtherCanned";
 import OtherReward from "./pages/OtherReward";
 import OtherBiscuit from "./pages/OtherBiscuit";
@@ -16,6 +15,7 @@ import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Basket from "./pages/Basket";
 import Search from "./pages/Search";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/kayit" element={<Register />} />
         <Route path="/giris" element={<Login />} />
         <Route path="/sepet" element={<Basket />} />
@@ -33,7 +34,6 @@ function App() {
         <Route path="/kedi-mamasi" element={<CatFood />} />
         <Route path="/kopek-mamasi" element={<DogFood />} />
         <Route path="/diger-urunler" element={<OtherProducts />}>
-          <Route index element={<OtherHome />} />
           <Route path="yas-mamasi" element={<OtherCanned />} />
           <Route path="odul-mamasi" element={<OtherReward />} />
           <Route path="kemik" element={<OtherBone />} />

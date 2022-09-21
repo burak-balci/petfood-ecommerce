@@ -5,6 +5,7 @@ import { getFoods } from "../../firebase";
 import { useEffect } from "react";
 import store from "../../context/store";
 import { clearFoods } from "../../context/food";
+import { Helmet } from "react-helmet";
 
 interface Food {
   type: string;
@@ -23,6 +24,10 @@ const DogFood = () => {
   const { food } = useSelector((state: any) => state.food);
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | Köpek Mamaları</title>
+      </Helmet>
       <div className={styles.innerContainer}>
         {food.map((item: Food, i: number) => (
           <DetailCard key={i} item={item} />

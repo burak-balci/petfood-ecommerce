@@ -6,6 +6,7 @@ import store from "../../context/store";
 import { getAllFoods } from "../../firebase";
 import DetailCard from "../../components/DetailCard";
 import styles from "./Search.module.css";
+import { Helmet } from "react-helmet";
 
 const Search = () => {
   const { word } = useParams<{ word: string }>();
@@ -35,6 +36,10 @@ const Search = () => {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | "{word}" Arama Sonuçları</title>
+      </Helmet>
       <div className={styles.innerContainer}>
         <div className={styles.contentContainer}>
           {filtered.length > 0 ? (

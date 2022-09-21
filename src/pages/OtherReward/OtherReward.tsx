@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import store from "../../context/store";
 import { clearFoods } from "../../context/food";
 import styles from "./OtherReward.module.css";
+import { Helmet } from "react-helmet";
 
 interface Food {
   type: string;
@@ -23,6 +24,10 @@ const OtherReward = () => {
   const { food } = useSelector((state: any) => state.food);
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | Ödül Mamaları</title>
+      </Helmet>
       {food.map((item: Food, i: number) => (
         <DetailCard key={i} item={item} />
       ))}

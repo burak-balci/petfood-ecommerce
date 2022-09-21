@@ -1,8 +1,8 @@
-import React from "react";
 import styles from "./Register.module.css";
 import { Formik, Field, Form } from "formik";
 import RegisterSchema from "./RegisterSchema";
 import { register } from "../../firebase";
+import { Helmet } from "react-helmet";
 
 interface Values {
   email: string;
@@ -13,6 +13,10 @@ interface Values {
 const Register = () => {
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | Üye Ol</title>
+      </Helmet>
       <div className={styles.innerContainer}>
         <Formik
           initialValues={{

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
-import { login, logout } from "../../firebase";
+import { login } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,10 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>8Pet Mama | Giriş Yap</title>
+      </Helmet>
       <div className={styles.innerContainer}>
         <form onSubmit={handleSubmit}>
           <div className={styles.title}>Giriş Yap</div>
